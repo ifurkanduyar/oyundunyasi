@@ -273,7 +273,7 @@ $("mk").onclick=async()=>{
     me=0;sel=[];
     await set(sref(c),{ph:"lobby",t:0,w:-1,g:["-","-"],e:[E9,E9],rdy:[0,0],n:[myName(),""]});
     save(c);listen(c);setMsg("");
-  }catch(e){setMsg(FAIL)}
+  }catch(e){setMsg(FAIL+" ("+(e.code||e.message)+")")}
 };
 $("jn").onclick=async()=>{
   const c=$("cd").value.trim().toLowerCase();
@@ -287,7 +287,7 @@ $("jn").onclick=async()=>{
     const r=await run(1,{k:"join",name:myName()});
     if(!r||!r.committed){leave("Odaya girilemedi. Kodu kontrol edip tekrar dene.");return}
     save(c);setMsg("");
-  }catch(e){leave(FAIL)}
+  }catch(e){leave(FAIL+" ("+(e.code||e.message)+")")}
 };
 $("exit").onclick=()=>{if(confirm("Oyundan çıkılsın mı? Oda iki oyuncu için de kapanır."))closeRoom()};
 $("exit2").onclick=closeRoom;
